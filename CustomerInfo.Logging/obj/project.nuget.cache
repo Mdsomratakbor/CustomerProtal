@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "VXJMFF5stzPw0afDJ9hiGf7rNGARM4GGYV9H59PdoL9DjlOu1mr4gsQfia8HRpTs456nWie3Uk/BiJutK+YAOg==",
+  "dgSpecHash": "tsuoKaew99HKT/gR0RA8mj2ERdJz9SI5yOaJwffFqiuOnYwMQiHC1lZlRnkbIHSSzzwCpIB5ocpz0NfrD6Vwtw==",
   "success": true,
   "projectFilePath": "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Logging\\CustomerInfo.Logging.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\serilog\\2.12.0\\serilog.2.12.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\serilog.sinks.console\\4.1.0\\serilog.sinks.console.4.1.0.nupkg.sha512"
+  ],
   "logs": []
 }
