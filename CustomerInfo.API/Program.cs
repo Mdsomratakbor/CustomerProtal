@@ -1,5 +1,6 @@
 using CustomerInfo.Data;
 using CustomerInfo.Logging;
+using CustomerInfo.Service;
 using CustomerInfo.Services.Interfaces;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;

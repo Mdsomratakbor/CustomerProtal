@@ -1773,19 +1773,6 @@
         "runtime": {
           "bin/placeholder/CustomerInfo.Entities.dll": {}
         }
-      },
-      "CustomerInfo.Services/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
-        "dependencies": {
-          "CustomerInfo.Entities": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/CustomerInfo.Services.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/CustomerInfo.Services.dll": {}
-        }
       }
     }
   },
@@ -6059,17 +6046,11 @@
       "type": "project",
       "path": "../CustomerInfo.Entities/CustomerInfo.Entities.csproj",
       "msbuildProject": "../CustomerInfo.Entities/CustomerInfo.Entities.csproj"
-    },
-    "CustomerInfo.Services/1.0.0": {
-      "type": "project",
-      "path": "../CustomerInfo.Services/CustomerInfo.Services.csproj",
-      "msbuildProject": "../CustomerInfo.Services/CustomerInfo.Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
       "CustomerInfo.Entities >= 1.0.0",
-      "CustomerInfo.Services >= 1.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 5.0.17",
       "Microsoft.EntityFrameworkCore.Relational >= 5.0.17",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.17",
@@ -6111,9 +6092,6 @@
           "projectReferences": {
             "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Entities\\CustomerInfo.Entities.csproj": {
               "projectPath": "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Entities\\CustomerInfo.Entities.csproj"
-            },
-            "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Services\\CustomerInfo.Services.csproj": {
-              "projectPath": "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Services\\CustomerInfo.Services.csproj"
             }
           }
         }

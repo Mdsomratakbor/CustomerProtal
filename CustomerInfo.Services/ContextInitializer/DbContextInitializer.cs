@@ -1,11 +1,13 @@
-﻿using CustomerInfo.Services.Interfaces;
+﻿using CustomerInfo.Data;
+using CustomerInfo.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CustomerInfo.Data
+namespace CustomerInfo.Service
+
 {
     public class DbContextInitializer
     {

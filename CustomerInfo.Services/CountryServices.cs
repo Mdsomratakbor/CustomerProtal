@@ -1,4 +1,6 @@
 ﻿using CustomerInfo.Entities;
+using CustomerInfo.Services.Interfaces;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +9,24 @@ using System.Threading.Tasks;
 
 namespace CustomerInfo.Services
 {
-    public class CountryServices
+    public class CountryServices: ICountryServices
     {
+        public async Task<List<Country>> GetCountriesAsync()
+        {
+            var countryModel = new List<Country>();
+            try
+            {
+                countryModel = await CreateListAsync();
+            }
+            catch (Exception ex)
+            {
+                Log.Error("An error occurred while seeding the database  {Error} {StackTrace} {InnerException} {Source}",
+                   ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
+
+            }
+            return countryModel;
+
+        }
         private Task<List<Country>> CreateListAsync()
         {
             return Task.Run(() =>

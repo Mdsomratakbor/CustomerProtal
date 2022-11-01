@@ -38,6 +38,9 @@
               },
               "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Logging\\CustomerInfo.Logging.csproj": {
                 "projectPath": "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Logging\\CustomerInfo.Logging.csproj"
+              },
+              "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Services\\CustomerInfo.Services.csproj": {
+                "projectPath": "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Services\\CustomerInfo.Services.csproj"
               }
             }
           }
@@ -52,6 +55,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Versioning": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -85,6 +92,22 @@
             "Serilog.Sinks.RollingFile": {
               "target": "Package",
               "version": "[3.3.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            },
+            "Swashbuckle.AspNetCore.Swagger": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerGen": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerUI": {
+              "target": "Package",
+              "version": "[6.4.0, )"
             }
           },
           "imports": [
@@ -141,9 +164,6 @@
             "projectReferences": {
               "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Entities\\CustomerInfo.Entities.csproj": {
                 "projectPath": "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Entities\\CustomerInfo.Entities.csproj"
-              },
-              "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Services\\CustomerInfo.Services.csproj": {
-                "projectPath": "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Services\\CustomerInfo.Services.csproj"
               }
             }
           }
@@ -358,6 +378,9 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
+              "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Data\\CustomerInfo.Data.csproj": {
+                "projectPath": "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Data\\CustomerInfo.Data.csproj"
+              },
               "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Entities\\CustomerInfo.Entities.csproj": {
                 "projectPath": "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Entities\\CustomerInfo.Entities.csproj"
               }
@@ -373,6 +396,12 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "Serilog": {
+              "target": "Package",
+              "version": "[2.12.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
