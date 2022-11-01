@@ -54,7 +54,7 @@ namespace CustomerInfo.API
                 {
                     webBuilder.UseSerilog((hostingContext, loggerConfiguration) => loggerConfiguration
                       .Enrich.FromLogContext()
-                      .Enrich.WithProperty("Application", "CMS_APPLICATION_NG")
+                      .Enrich.WithProperty("Application", "CustomerInfo_APPLICATION_NG")
                       .Enrich.WithProperty("MachineName", Environment.MachineName)
                       .Enrich.WithProperty("CurrentManagedThreadId", Environment.CurrentManagedThreadId)
                       .Enrich.WithProperty("OSVersion", Environment.OSVersion)

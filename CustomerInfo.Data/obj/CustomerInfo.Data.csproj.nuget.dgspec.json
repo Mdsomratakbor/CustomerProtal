@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Data\\CustomerInfo.Data.csproj": {}
+    "D:\\PersonalProject\\Interview\\CustomerProtal\\CustomerInfo.Data\\CustomerInfo.Data.csproj": {}
   },
   "projects": {
-    "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Data\\CustomerInfo.Data.csproj": {
+    "D:\\PersonalProject\\Interview\\CustomerProtal\\CustomerInfo.Data\\CustomerInfo.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Data\\CustomerInfo.Data.csproj",
+        "projectUniqueName": "D:\\PersonalProject\\Interview\\CustomerProtal\\CustomerInfo.Data\\CustomerInfo.Data.csproj",
         "projectName": "CustomerInfo.Data",
-        "projectPath": "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Data\\CustomerInfo.Data.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Data\\obj\\",
+        "projectPath": "D:\\PersonalProject\\Interview\\CustomerProtal\\CustomerInfo.Data\\CustomerInfo.Data.csproj",
+        "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
+        "outputPath": "D:\\PersonalProject\\Interview\\CustomerProtal\\CustomerInfo.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -33,8 +33,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Entities\\CustomerInfo.Entities.csproj": {
-                "projectPath": "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Entities\\CustomerInfo.Entities.csproj"
+              "D:\\PersonalProject\\Interview\\CustomerProtal\\CustomerInfo.Entities\\CustomerInfo.Entities.csproj": {
+                "projectPath": "D:\\PersonalProject\\Interview\\CustomerProtal\\CustomerInfo.Entities\\CustomerInfo.Entities.csproj"
               }
             }
           }
@@ -86,24 +86,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Entities\\CustomerInfo.Entities.csproj": {
+    "D:\\PersonalProject\\Interview\\CustomerProtal\\CustomerInfo.Entities\\CustomerInfo.Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Entities\\CustomerInfo.Entities.csproj",
+        "projectUniqueName": "D:\\PersonalProject\\Interview\\CustomerProtal\\CustomerInfo.Entities\\CustomerInfo.Entities.csproj",
         "projectName": "CustomerInfo.Entities",
-        "projectPath": "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Entities\\CustomerInfo.Entities.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Entities\\obj\\",
+        "projectPath": "D:\\PersonalProject\\Interview\\CustomerProtal\\CustomerInfo.Entities\\CustomerInfo.Entities.csproj",
+        "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
+        "outputPath": "D:\\PersonalProject\\Interview\\CustomerProtal\\CustomerInfo.Entities\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -146,7 +146,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

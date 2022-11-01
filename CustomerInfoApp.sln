@@ -3,22 +3,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerInfo.API", "CustomerInfo.API\CustomerInfo.API.csproj", "{1D79AC16-2AC5-466E-843A-D2AC8AA49123}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerInfo.API", "CustomerInfo.API\CustomerInfo.API.csproj", "{1D79AC16-2AC5-466E-843A-D2AC8AA49123}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerInfo.Entities", "CustomerInfo.Entities\CustomerInfo.Entities.csproj", "{32C2BFB7-7E2E-44F3-98A2-22BDE4A27C70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerInfo.Entities", "CustomerInfo.Entities\CustomerInfo.Entities.csproj", "{32C2BFB7-7E2E-44F3-98A2-22BDE4A27C70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerInfo.Data", "CustomerInfo.Data\CustomerInfo.Data.csproj", "{9F0461B1-5CFA-4B5F-9EDA-42C3B3351D5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerInfo.Data", "CustomerInfo.Data\CustomerInfo.Data.csproj", "{9F0461B1-5CFA-4B5F-9EDA-42C3B3351D5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerInfo.Services", "CustomerInfo.Services\CustomerInfo.Services.csproj", "{90395027-ACDC-41AB-B881-B512D41CDDE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerInfo.Services", "CustomerInfo.Services\CustomerInfo.Services.csproj", "{90395027-ACDC-41AB-B881-B512D41CDDE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerInfo.Web", "CustomerInfo.Web\CustomerInfo.Web.csproj", "{871C3086-BF17-4A27-B3F4-DA983AF280DA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerInfo.Logging", "CustomerInfo.Logging\CustomerInfo.Logging.csproj", "{4E8AC907-EA0F-48AA-9896-3BB8790F0DB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerInfo.Logging", "CustomerInfo.Logging\CustomerInfo.Logging.csproj", "{4E8AC907-EA0F-48AA-9896-3BB8790F0DB3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9128248A-B9BE-4EF7-97CF-8CED246141E8}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerInfo.Web", "CustomerInfo.Web\CustomerInfo.Web.csproj", "{DA914FB1-E8F1-4F55-84C8-D5158759B0A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,14 +42,14 @@ Global
 		{90395027-ACDC-41AB-B881-B512D41CDDE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90395027-ACDC-41AB-B881-B512D41CDDE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90395027-ACDC-41AB-B881-B512D41CDDE0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{871C3086-BF17-4A27-B3F4-DA983AF280DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{871C3086-BF17-4A27-B3F4-DA983AF280DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{871C3086-BF17-4A27-B3F4-DA983AF280DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{871C3086-BF17-4A27-B3F4-DA983AF280DA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4E8AC907-EA0F-48AA-9896-3BB8790F0DB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4E8AC907-EA0F-48AA-9896-3BB8790F0DB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E8AC907-EA0F-48AA-9896-3BB8790F0DB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E8AC907-EA0F-48AA-9896-3BB8790F0DB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA914FB1-E8F1-4F55-84C8-D5158759B0A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA914FB1-E8F1-4F55-84C8-D5158759B0A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA914FB1-E8F1-4F55-84C8-D5158759B0A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA914FB1-E8F1-4F55-84C8-D5158759B0A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
