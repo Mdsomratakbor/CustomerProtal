@@ -10,5 +10,7 @@ namespace CustomerInfo.Services.Interfaces
     public interface ICountryServices
     {
         Task<List<Country>> GetCountriesAsync();
+
+      
     }
 }

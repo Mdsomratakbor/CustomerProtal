@@ -11,9 +11,9 @@ namespace CustomerInfo.API.DTO
             this.Message = message;
             this.Data = data;
         }
-        private HttpStatusCode Code { get; }
-        private bool Status { get; }
-        private dynamic Message { get; }
-        private dynamic Data { get; }
+        public HttpStatusCode Code { get; }
+        public bool Status { get; }
+        public dynamic Message { get; }
+        public dynamic Data { get; }
     }
 }
