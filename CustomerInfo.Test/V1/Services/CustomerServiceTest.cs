@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace CustomerInfo.Test.V1.Services
 {
-    public class AddressServiceTest
+    public class CustomerServiceTest
     {
-        public AddressServiceTest()
-        {
-
-        }
     }
 }
