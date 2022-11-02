@@ -3,9 +3,11 @@ using CustomerInfo.Entities;
 using CustomerInfo.Services.AbstractClass;
 using CustomerInfo.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,7 +15,7 @@ namespace CustomerInfo.Services
 {
     public class CustomerServices : BaseRepository<Customer>, ICustomerServices
     {
-        private readonly ApplicationDbContext _context;
+        private new readonly ApplicationDbContext _context=null;
         public CustomerServices(ApplicationDbContext context) : base(context)
         {
             _context = context;
@@ -24,7 +26,7 @@ namespace CustomerInfo.Services
             return await FindAll().ToListAsync();
         }
 
-        public async Task<string> CustomerDelete(int id)
+        public async Task<string> DeleteAsync(int id)
         {
             try
             {
@@ -47,5 +49,76 @@ namespace CustomerInfo.Services
                 return ex.Message;
             }
         }
+
+        public async Task<string> SaveDataAsync(Customer model)
+        {
+            try
+            {
+                await using var dbContextTransaction = _context.Database.BeginTransaction();
+
+                try
+                {
+                    Create(model);
+                    _context.SaveChanges();
+                    dbContextTransaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    Log.Error("An error occurred while seeding the database  {Error} {StackTrace} {InnerException} {Source}",
+                       ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
+
+                    dbContextTransaction.Rollback();
+                    return ex.InnerException.ToString();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Log.Error("An error occurred while seeding the database  {Error} {StackTrace} {InnerException} {Source}",
+                       ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
+                return ex.Message;
+            }
+            return "1";
+        }
+
+        public async Task<string> UpdateAsync(Customer model)
+        {
+            try
+            {
+                await using var dbContextTransaction = _context.Database.BeginTransaction();
+
+                try
+                {
+                    Update(model);
+                    _context.SaveChanges();
+                    dbContextTransaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    Log.Error("An error occurred while seeding the database  {Error} {StackTrace} {InnerException} {Source}",
+                       ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
+
+                    dbContextTransaction.Rollback();
+                    return ex.InnerException.Message;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Log.Error("An error occurred while seeding the database  {Error} {StackTrace} {InnerException} {Source}",
+                       ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
+                return ex.Message;
+            }
+            return "1";
+        }
+
+       
+
+        public Task<List<Customer>> GetCustomersGetByIdAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+  
     }
 }

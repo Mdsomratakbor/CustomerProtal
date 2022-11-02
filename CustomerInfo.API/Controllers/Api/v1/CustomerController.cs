@@ -1,4 +1,5 @@
 ﻿using CustomerInfo.API.DTO;
+using CustomerInfo.Entities;
 using CustomerInfo.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,10 +21,12 @@ namespace CustomerInfo.API.Controllers.Api.v1
 
         private readonly ICountryServices _countryServices = null;
         private readonly ICustomerServices _customerServices = null;
-        public CustomerController(ICountryServices countryServices, ICustomerServices customerServices)
+        private readonly IAddressServices _addressServices = null;
+        public CustomerController(ICountryServices countryServices, ICustomerServices customerServices, IAddressServices addressServices)
         {
             _countryServices = countryServices;
             _customerServices = customerServices;
+            _addressServices = addressServices;
         }
 
         [HttpGet("Countries")]
@@ -68,15 +71,68 @@ namespace CustomerInfo.API.Controllers.Api.v1
             try
             {
                 string output = string.Empty;
-                if (ModelState.IsValid)
+                if (!ModelState.IsValid)
                 {
                     return new ResponseMessage(HttpStatusCode.NotAcceptable, false, ModelState.Select(x=>x.Value), null);
                 }
 
-                //var person = new PersonalInfo() { Name = model.Name, CountryId = model.CountryId, CityId = model.CityId, FileUrl = dbPath, DateOfBirth = model.DateOfBirth.ToString(), Language = model.Language == null ? "" : model.Language, FileName = string.IsNullOrWhiteSpace(model.FileName) ? "" : model.FileName };
-                //var output = await _personalService.PersonDataSaveAndUpdate(person);
+                List<Address> addresses = new ();
+                model.Addresses.ForEach(x => addresses.Add(new Address() { CustomerAddress = x.CustomerAddress }));
+                
+                var customer = new Customer()
+                {
+                   CountryId = model.CountryId,
+                   CustomerName = model.CustomerName,
+                   FatherName   =  model.FatherName,
+                   MaritalStatus = model.MaritalStatus,
+                   MotherName = model.MotherName,
+                  CustomerPhoto = model.CustomerPhoto,
+                  Addresses = addresses
+
+                };
+                 output = await _customerServices.SaveDataAsync(customer);
 
                 return output == "1" ? new ResponseMessage(HttpStatusCode.OK, true, "Data Save Successfully", null) : new ResponseMessage(HttpStatusCode.BadRequest, false, output, null);
+            }
+            catch (Exception ex)
+            {
+                Log.Error("An error occurred while seeding the database  {Error} {StackTrace} {InnerException} {Source}",
+ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
+                return new ResponseMessage(HttpStatusCode.NotAcceptable, false, ex.Message, null);
+
+            }
+        }
+        [HttpPost]
+        [Route("[action]")]
+        public async Task<ResponseMessage> Edit(CustomerEditDTO model)
+        {
+            try
+            {
+                string output = string.Empty;
+                if (!ModelState.IsValid)
+                {
+                    return new ResponseMessage(HttpStatusCode.NotAcceptable, false, ModelState.Select(x => x.Value), null);
+                }
+
+                List<Address> addresses = new();
+                model.Addresses.ForEach(x => addresses.Add(new Address() { CustomerId= model.Id, Id = x.Id, CustomerAddress = x.CustomerAddress }));
+
+                var customer = new Customer()
+                {
+                    Id = model.Id,
+                    CountryId = model.CountryId,
+                    CustomerName = model.CustomerName,
+                    FatherName   =  model.FatherName,
+                    MaritalStatus = model.MaritalStatus,
+                    MotherName = model.MotherName,
+                    CustomerPhoto = model.CustomerPhoto,
+                  
+                    Addresses = addresses
+
+                };
+                output = await _customerServices.UpdateAsync(customer);
+
+                return output == "1" ? new ResponseMessage(HttpStatusCode.OK, true, "Data Update Successfully", null) : new ResponseMessage(HttpStatusCode.BadRequest, false, output, null);
             }
             catch (Exception ex)
             {
@@ -99,7 +155,59 @@ ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
                 if (id == 0)
                     return new ResponseMessage(HttpStatusCode.NotAcceptable, false, "Please enter valid Id", null);
 
-                var output = await _customerServices.CustomerDelete(id);
+                var output = await _customerServices.DeleteAsync(id);
+
+                return output == "1" ? new ResponseMessage(HttpStatusCode.OK, true, "Data Delete Successfully", null) : new ResponseMessage(HttpStatusCode.BadRequest, false, output, null);
+            }
+            catch (Exception ex)
+            {
+                Log.Error("An error occurred while seeding the database  {Error} {StackTrace} {InnerException} {Source}",
+ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
+                return new ResponseMessage(HttpStatusCode.NotAcceptable, false, ex.Message, null);
+
+            }
+        }
+
+
+        [HttpPost]
+        [Route("Address/Edit")]
+        public async Task<ResponseMessage> EditAddress([FromBody]AddressEditDTO model)
+        {
+            try
+            {
+                string output = string.Empty;
+                if (!ModelState.IsValid)
+                {
+                    return new ResponseMessage(HttpStatusCode.NotAcceptable, false, ModelState.Select(x => x.Value), null);
+                }
+
+                var customer = new Address() { CustomerId= model.CustomerId, CustomerAddress = model.CustomerAddress, Id = model.Id };
+                output = await _addressServices.UpdateAsync(customer);
+
+                return output == "1" ? new ResponseMessage(HttpStatusCode.OK, true, "Data Update Successfully", null) : new ResponseMessage(HttpStatusCode.BadRequest, false, output, null);
+            }
+            catch (Exception ex)
+            {
+                Log.Error("An error occurred while seeding the database  {Error} {StackTrace} {InnerException} {Source}",
+ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
+                return new ResponseMessage(HttpStatusCode.NotAcceptable, false, ex.Message, null);
+
+            }
+        }
+
+
+
+
+        [HttpPut]
+        [Route("Address/Delete")]
+        public async Task<ResponseMessage> DeleteAddress([FromBody] int id)
+        {
+            try
+            {
+                if (id == 0)
+                    return new ResponseMessage(HttpStatusCode.NotAcceptable, false, "Please enter valid Id", null);
+
+                var output = await _customerServices.DeleteAsync(id);
 
                 return output == "1" ? new ResponseMessage(HttpStatusCode.OK, true, "Data Delete Successfully", null) : new ResponseMessage(HttpStatusCode.BadRequest, false, output, null);
             }

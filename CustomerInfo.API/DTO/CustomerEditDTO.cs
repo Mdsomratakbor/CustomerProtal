@@ -6,8 +6,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CustomerInfo.API.DTO
 {
-    public class CustomerAddDTO
+    public class CustomerEditDTO
     {
+      public int Id { get; set; }
         [Required]
         [MaxLength(100), MinLength(5)]
         public string CustomerName { get; set; }
@@ -18,6 +19,6 @@ namespace CustomerInfo.API.DTO
         public int MaritalStatus { get; set; }
         public string CustomerPhoto { get; set; }
         public int CountryId { get; set; }
-        public List<AddressDTO> Addresses { get; set; }
+        public List<AddressEditDTO> Addresses { get; set; }
     }
 }
