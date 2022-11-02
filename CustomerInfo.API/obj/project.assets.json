@@ -7153,23 +7153,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {},
+    "C:\\Users\\USER\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Interview\\CustomerInfoApp\\CustomerInfo.API\\CustomerInfo.API.csproj",
+      "projectUniqueName": "D:\\PersonalProject\\Interview\\CustomerProtal\\CustomerInfo.API\\CustomerInfo.API.csproj",
       "projectName": "CustomerInfo.API",
-      "projectPath": "E:\\Interview\\CustomerInfoApp\\CustomerInfo.API\\CustomerInfo.API.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "E:\\Interview\\CustomerInfoApp\\CustomerInfo.API\\obj\\",
+      "projectPath": "D:\\PersonalProject\\Interview\\CustomerProtal\\CustomerInfo.API\\CustomerInfo.API.csproj",
+      "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
+      "outputPath": "D:\\PersonalProject\\Interview\\CustomerProtal\\CustomerInfo.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -7185,14 +7185,14 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Data\\CustomerInfo.Data.csproj": {
-              "projectPath": "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Data\\CustomerInfo.Data.csproj"
+            "D:\\PersonalProject\\Interview\\CustomerProtal\\CustomerInfo.Data\\CustomerInfo.Data.csproj": {
+              "projectPath": "D:\\PersonalProject\\Interview\\CustomerProtal\\CustomerInfo.Data\\CustomerInfo.Data.csproj"
             },
-            "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Logging\\CustomerInfo.Logging.csproj": {
-              "projectPath": "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Logging\\CustomerInfo.Logging.csproj"
+            "D:\\PersonalProject\\Interview\\CustomerProtal\\CustomerInfo.Logging\\CustomerInfo.Logging.csproj": {
+              "projectPath": "D:\\PersonalProject\\Interview\\CustomerProtal\\CustomerInfo.Logging\\CustomerInfo.Logging.csproj"
             },
-            "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Services\\CustomerInfo.Services.csproj": {
-              "projectPath": "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Services\\CustomerInfo.Services.csproj"
+            "D:\\PersonalProject\\Interview\\CustomerProtal\\CustomerInfo.Services\\CustomerInfo.Services.csproj": {
+              "projectPath": "D:\\PersonalProject\\Interview\\CustomerProtal\\CustomerInfo.Services\\CustomerInfo.Services.csproj"
             }
           }
         }
@@ -7281,7 +7281,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

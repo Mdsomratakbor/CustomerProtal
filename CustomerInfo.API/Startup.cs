@@ -48,6 +48,7 @@ namespace CustomerInfo.API
            options.UseSqlServer(Configuration.GetConnectionString("Connection")));
             services.AddTransient<ICountryServices, CountryServices>();
             services.AddTransient<ICustomerServices, CustomerServices>();
+            services.AddTransient<IAddressServices, AddressServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

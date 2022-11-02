@@ -207,7 +207,7 @@ ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
                 if (id == 0)
                     return new ResponseMessage(HttpStatusCode.NotAcceptable, false, "Please enter valid Id", null);
 
-                var output = await _customerServices.DeleteAsync(id);
+                var output = await _addressServices.DeleteAsync(id);
 
                 return output == "1" ? new ResponseMessage(HttpStatusCode.OK, true, "Data Delete Successfully", null) : new ResponseMessage(HttpStatusCode.BadRequest, false, output, null);
             }
