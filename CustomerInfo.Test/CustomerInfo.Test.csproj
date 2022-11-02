@@ -22,10 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="V1\Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\CustomerInfo.Services\CustomerInfo.Services.csproj" />
   </ItemGroup>
 
