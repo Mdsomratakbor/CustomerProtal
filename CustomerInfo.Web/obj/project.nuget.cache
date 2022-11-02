@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "W/nHVsxPZEVldTr5SFrjRiKzwuQ48SURW2zyBHdvwYci7tcync4tBu7T4oYAQiN0KFt5ek4+Q56bVbHowBlszg==",
+  "dgSpecHash": "A2uwVvJ6zIXLDon5t6Nkoj5ogE6EMg3JGg/gjHsDxSS+fA+SF6yV/hGYtXnxutWmXQ+AfpplgmnM2i77eQehSQ==",
   "success": true,
-  "projectFilePath": "D:\\PersonalProject\\Interview\\CustomerProtal\\CustomerInfo.Web\\CustomerInfo.Web.csproj",
+  "projectFilePath": "E:\\Interview\\CustomerInfoApp\\CustomerInfo.Web\\CustomerInfo.Web.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
