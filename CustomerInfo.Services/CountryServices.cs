@@ -36,13 +36,7 @@ namespace CustomerInfo.Services
 
         }
 
-        public async Task<List<Country>> GetCountriesWithIdAsync()
-        {
-
-            return await FindAll().ToListAsync();
-
-
-        }
+        public async Task<List<Country>> GetCountriesWithIdAsync() => await FindAll().ToListAsync();
 
         private Task<List<Country>> CreateListAsync()
         {

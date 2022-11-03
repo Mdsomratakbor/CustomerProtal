@@ -21,10 +21,8 @@ namespace CustomerInfo.Services
             _context = context;
         }
 
-        public async Task<List<Customer>> GetCustomersAsync()
-        {
-            return await FindAll().ToListAsync();
-        }
+        public async Task<List<Customer>> GetCustomersAsync() => await FindAll().ToListAsync();
+
 
         public async Task<string> DeleteAsync(int id)
         {
@@ -114,11 +112,9 @@ namespace CustomerInfo.Services
 
        
 
-        public async Task<Customer> GetCustomersGetByIdAsync(int id)
-        {
-            return await FindByCondition(x => x.Id == id).Include(x=>x.Addresses).FirstOrDefaultAsync();
-        }
+        public async Task<Customer> GetCustomersGetByIdAsync(int id) => await FindByCondition(x => x.Id == id).Include(x => x.Addresses).FirstOrDefaultAsync();
 
-  
+
+
     }
 }
