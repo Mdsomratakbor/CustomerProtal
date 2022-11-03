@@ -29,14 +29,15 @@ namespace CustomerInfo.API.Controllers.Api.v1
             _addressServices = addressServices;
         }
 
+
         [HttpGet("Countries")]
-        public ResponseMessage GetPersons()
+        public ResponseMessage GetCountries()
         {
             try
             {
                 List<CountryDTO> countries = new List<CountryDTO>();
-                _countryServices.GetCountriesAsync().Result.ForEach(x => countries.Add(new CountryDTO() { Id = x.Id, Name = x.CountryName }));
-                return new ResponseMessage(HttpStatusCode.OK, true, "Person Loaded!!", countries);
+                _countryServices.GetCountriesWithIdAsync().Result.ForEach(x => countries.Add(new CountryDTO() { Id = x.Id, Name = x.CountryName }));
+                return new ResponseMessage(HttpStatusCode.OK, true, "Country Loaded!!", countries);
             }
             catch (Exception ex)
             {
@@ -55,6 +56,22 @@ namespace CustomerInfo.API.Controllers.Api.v1
                 List<CustomerListDTO> countries = new List<CustomerListDTO>();
                 _customerServices.GetCustomersAsync().Result.ForEach(x => countries.Add(new CustomerListDTO() { Id = x.Id, CustomerName = x.CustomerName, FatherName = x.FatherName, MotherName = x.MotherName }));
                 return new ResponseMessage(HttpStatusCode.OK, true, "Customer Loaded!!", countries);
+            }
+            catch (Exception ex)
+            {
+                Log.Error("An error occurred while seeding the database  {Error} {StackTrace} {InnerException} {Source}",
+     ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
+                return new ResponseMessage(HttpStatusCode.NotAcceptable, false, ex.Message, null);
+            }
+
+        }
+
+        [HttpGet("CustomerById/{id}")]
+        public ResponseMessage GetCustomerById([FromRoute]int id)
+        {
+            try
+            {
+                return new ResponseMessage(HttpStatusCode.OK, true, "Customer Loaded!!", _customerServices.GetCustomersGetByIdAsync(id).Result);
             }
             catch (Exception ex)
             {

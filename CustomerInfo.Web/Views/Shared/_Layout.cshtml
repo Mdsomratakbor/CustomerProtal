@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - CustomerInfo.Web</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/css/site.css" rel="stylesheet" />
     <!-- Vendor CSS -->
-    <link rel="stylesheet" href="~/assets/vendor/bootstrap/css/bootstrap.css" />
+@*    <link rel="stylesheet" href="~/assets/vendor/bootstrap/css/bootstrap.css" />*@
     <link rel="stylesheet" href="~/assets/vendor/font-awesome/css/font-awesome.css" />
     <link rel="stylesheet" href="~/assets/vendor/magnific-popup/magnific-popup.css" />
 
@@ -21,17 +21,10 @@
     <!-- GRID CSS-->
     <link href="~/assets/javascripts/ui-grid/4.4.7/ui-grid.css" rel="stylesheet" />
     <link href="~/assets/ng-source/ng-vendor/ng-select2/select2.css" rel="stylesheet" />
-    <link href="~/assets/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet" />
-    <link href="~/assets/vendor/bootstrap-fileupload/bootstrap-fileupload.min.css" rel="stylesheet" />
-        <link rel="stylesheet" href="~/assets/vendor/bootstrap-tagsinput/bootstrap-tagsinput.css" />
-        <link rel="stylesheet" href="~/assets/vendor/bootstrap-colorpicker/css/bootstrap-colorpicker.css" />
         <link rel="stylesheet" href="~/assets/vendor/summernote/summernote.css" />
         <link rel="stylesheet" href="~/assets/vendor/summernote/summernote-bs3.css" />
-        <link rel="stylesheet" href="~/assets/vendor/bootstrap-multiselect/bootstrap-multiselect.css" />
         <link rel="stylesheet" href="~/assets/vendor/select2/select2.css" />
-        <link rel="stylesheet" href="~/assets/vendor/dropzone/css/basic.css" />
-        <link rel="stylesheet" href="~/assets/vendor/dropzone/css/dropzone.css" />
-        <link rel="stylesheet" href="~/assets/vendor/jquery-datatables-bs3/assets/css/datatables.css" />
+
 
 
     <!-- Theme CSS -->
@@ -48,23 +41,23 @@
     <script src="~/assets/ng-source/angular1.6.js"></script>
     <script src="~/assets/ng-source/ng-vendor/ng-select2/select2.js"></script>
 
-    <script src="~/assets/vendor/javascripts/ui-grid/4.4.7/angular/angular-touch.js"></script>
-    <script src="~/assets/vendor/javascripts/ui-grid/4.4.7/angular/angular-animate.js"></script>
-    <script src="~/assets/vendor/javascripts/ui-grid/grunt-scripts/csv.js"></script>
-    <script src="~/assets/vendor/javascripts/ui-grid/grunt-scripts/pdfmake.js"></script>
-    <script src="~/assets/vendor/javascripts/ui-grid/grunt-scripts/vfs_fonts.js"></script>
-    <script src="~/assets/vendor/javascripts/ui-grid/grunt-scripts/lodash.min.js"></script>
-    <script src="~/assets/vendor/javascripts/ui-grid/grunt-scripts/jszip.min.js"></script>
-    <script src="~/assets/vendor/javascripts/ui-grid/grunt-scripts/excel-builder.dist.js"></script>
-    <script src="~/assets/vendor/javascripts/ui-grid/4.4.7/ui-grid.core.min.js"></script>
-    <script src="~/assets/vendor/javascripts/ui-grid/4.4.7/ui-grid.cellnav.min.js"></script>
-    <script src="~/assets/vendor/javascripts/ui-grid/4.4.7/ui-grid.selection.min.js"></script>
-    <script src="~/assets/vendor/javascripts/ui-grid/4.4.7/ui-grid.auto-resize.min.js"></script>
-    <script src="~/assets/vendor/javascripts/ui-grid/4.4.7/ui-grid.exporter.min.js"></script>
-    <script src="~/assets/vendor/javascripts/ui-grid/4.4.7/autoFitColumns.min.js"></script>
-    <script src="~/assets/vendor/javascripts/ui-grid/4.4.7/ui-grid.js"></script>
-    <script src="~/assets/vendor/javascripts/ng-common.js"></script>
-
+    <script src="~/assets/javascripts/ui-grid/4.4.7/angular/angular-touch.js"></script>
+    <script src="~/assets/javascripts/ui-grid/4.4.7/angular/angular-animate.js"></script>
+    <script src="~/assets/javascripts/ui-grid/grunt-scripts/csv.js"></script>
+    <script src="~/assets/javascripts/ui-grid/grunt-scripts/pdfmake.js"></script>
+    <script src="~/assets/javascripts/ui-grid/grunt-scripts/vfs_fonts.js"></script>
+    <script src="~/assets/javascripts/ui-grid/grunt-scripts/lodash.min.js"></script>
+    <script src="~/assets/javascripts/ui-grid/grunt-scripts/jszip.min.js"></script>
+    <script src="~/assets/javascripts/ui-grid/grunt-scripts/excel-builder.dist.js"></script>
+    <script src="~/assets/javascripts/ui-grid/4.4.7/ui-grid.core.min.js"></script>
+    <script src="~/assets/javascripts/ui-grid/4.4.7/ui-grid.cellnav.min.js"></script>
+    <script src="~/assets/javascripts/ui-grid/4.4.7/ui-grid.selection.min.js"></script>
+    <script src="~/assets/javascripts/ui-grid/4.4.7/ui-grid.auto-resize.min.js"></script>
+    <script src="~/assets/javascripts/ui-grid/4.4.7/ui-grid.exporter.min.js"></script>
+    <script src="~/assets/javascripts/ui-grid/4.4.7/autoFitColumns.min.js"></script>
+    <script src="~/assets/javascripts/ui-grid/4.4.7/ui-grid.js"></script>
+    <script src="~/assets/javascripts/ng-common.js"></script>
+    <script src="~/assets/vendor/pnotify/pnotify.custom.js"></script>
     <!-- custom app/directive -->
     <script src="~/assets/ng-source/ng-app/masterApp.js"></script>
     <script src="~/assets/ng-source/ng-directive/ng-directive.js"></script>
@@ -83,9 +76,6 @@
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
                 </div>

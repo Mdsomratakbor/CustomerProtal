@@ -1,5 +1,8 @@
-﻿using CustomerInfo.Entities;
+﻿using CustomerInfo.Data;
+using CustomerInfo.Entities;
+using CustomerInfo.Services.AbstractClass;
 using CustomerInfo.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -9,8 +12,13 @@ using System.Threading.Tasks;
 
 namespace CustomerInfo.Services
 {
-    public class CountryServices: ICountryServices
+    public class CountryServices : BaseRepository<Country>, ICountryServices
     {
+        private new readonly ApplicationDbContext _context = null;
+        public CountryServices(ApplicationDbContext context) : base(context)
+        {
+            _context = context;
+        }
         public async Task<List<Country>> GetCountriesAsync()
         {
             var countryModel = new List<Country>();
@@ -27,6 +35,15 @@ namespace CustomerInfo.Services
             return countryModel;
 
         }
+
+        public async Task<List<Country>> GetCountriesWithIdAsync()
+        {
+
+            return await FindAll().ToListAsync();
+
+
+        }
+
         private Task<List<Country>> CreateListAsync()
         {
             return Task.Run(() =>

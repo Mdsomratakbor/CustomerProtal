@@ -8,12 +8,12 @@ namespace CustomerInfo.API.DTO
 {
     public class CustomerAddDTO
     {
-        [Required]
-        [MaxLength(100), MinLength(5)]
+        //[Required]
+        //[MaxLength(100), MinLength(5)]
         public string CustomerName { get; set; }
-        [MaxLength(100), MinLength(5)]
+        //[MaxLength(100), MinLength(5)]
         public string FatherName { get; set; }
-        [MaxLength(100), MinLength(5)]
+        //[MaxLength(100), MinLength(5)]
         public string MotherName { get; set; }
         public int MaritalStatus { get; set; }
         public string CustomerPhoto { get; set; }

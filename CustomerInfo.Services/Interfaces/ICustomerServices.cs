@@ -10,7 +10,7 @@ namespace CustomerInfo.Services.Interfaces
     public interface ICustomerServices
     {
         Task<List<Customer>> GetCustomersAsync();
-        Task<List<Customer>> GetCustomersGetByIdAsync();
+        Task<Customer> GetCustomersGetByIdAsync(int id);
         Task<string> SaveDataAsync(Customer model);
         Task<string> DeleteAsync(int id);
         Task<string> UpdateAsync(Customer model);

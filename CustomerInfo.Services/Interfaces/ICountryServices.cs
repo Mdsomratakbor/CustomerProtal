@@ -11,6 +11,7 @@ namespace CustomerInfo.Services.Interfaces
     {
         Task<List<Country>> GetCountriesAsync();
 
-      
+        Task<List<Country>> GetCountriesWithIdAsync();
+
     }
 }

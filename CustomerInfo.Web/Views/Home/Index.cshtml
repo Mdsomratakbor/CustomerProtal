@@ -2,7 +2,403 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="panel" ng-app="ngGridApp" ng-controller="ngGridCtrl">
+    <form name="frmcustomerInfo">
+        <div class="panel-body p-2">
+            <div class="row">
+    <div class="col-md-4 mt-md">
+                    <div ui-grid="gridOptions" ui-grid-exporter ui-grid-auto-fit-columns ui-grid-resize-columns
+                        style="font-family: 'Open Sans', Arial, sans-serif; color: #252222 !important; height: 100%;" class="grid"></div>
+                </div>
+
+
+                <div class="col-md-8">
+
+                    <div class="form-group mt-4 button-group">
+                        <button class="btn btn-primary btn-lg" type="button" name="btnEdit" ng-disabled="frmcustomerInfo.$invalid" ng-click="Update()">
+                                    EDIT <i class="fa fa-edit"></i>
+                                </button>
+                        <button class="btn btn-success btn-lg" type="button" name="btnSubmit" ng-disabled="frmcustomerInfo.$invalid" ng-click="Save()">
+                            SAVE <i class="fa fa-floppy-o"></i>
+                        </button>
+                        <button class="btn btn-danger btn-lg" type="button" ng-disabled="customerId==0" ng-click="DeleteItem(customerId)" name="btnDelete">
+                            DELETE <i class="fa fa-trash"></i>
+                        </button>
+                        <button class="btn btn-warning btn-lg" type="button" ng-click="ClearForm()" ng-disabled="frmcustomerInfo.$invalid" name="btnCancle">
+                                    CANCEL <i class="fa fa-times"></i>
+                                </button>
+                    </div>
+
+                    <div class="button-group">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label text-bold">NAME :</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" ng-model="model.customerName" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label text-bold">FATHER NAME :</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" ng-model="model.fatherName" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label text-bold">MOTHER NAME :</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" ng-model="model.motherName" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label text-bold">MARITAL STATUS :</label>
+                            <div class="col-md-8">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" ng-model="model.maritalStatus" name="inlineRadioOptions" id="single" ng-true-value=""  ng-value="1">
+                                    <label class="form-check-label" for="inlineRadio1">SINGLE</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" ng-model="model.maritalStatus" name="inlineRadioOptions" id="married" ng-value="2">
+                                    <label class="form-check-label" for="inlineRadio2">MARRIED</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" ng-model="model.maritalStatus" name="inlineRadioOptions" id="others" ng-value="0">
+                                    <label class="form-check-label" for="inlineRadio3">OTHERS</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label text-bold">COUNTRY :</label>
+                            <div class="col-md-8">
+                                <select ng-model="model.countryId"
+                                        style="width:100%;"
+                                        select2=""
+                                        ng-options="d.id as d.name for d in CountryList">
+                                    <option value="" selected>--Select Country--</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label text-bold">PHOTO :</label>
+                            <div class="col-md-8">
+                                <input type="file" class="form-control" ng-model="model.customerPhoto" />
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button-group mt-2">
+                        <div class="form-group">
+
+                            <button class="mb-xs mt-xs mr-xs mt-xs btn btn-lg btn-danger pull-right" type="button" ng-click="addItem()">
+                                Add<i class="fa fa-plus ml-sm"></i>
+                            </button>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div ui-grid="gridOptionsDataSave" ui-grid-exporter ui-grid-auto-fit-columns ui-grid-resize-columns ui-grid-auto-resize
+                                     style="font-family: 'Open Sans', Arial, sans-serif; color: #252222 !important; height: 35vh;" class="grid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                        <div ng-show="showLoader" class="loading" style="margin: 0px; padding: 0px; position: fixed; right: 0px; top: 0px; width: 100%; height: 100%; z-index: 30001;">
+                        <img src="~/assets/images/wait.gif" alt="loading" style="position: absolute; top: 45%; left: 45%; width: 8%;">
+                        </div>                 
+                </div>
+      
+            </div>
+        </div>
+        </form>
+</section>
+<script>
+    ngGridApp.controller('ngGridCtrl', ['$scope', '$http', '$log', '$filter',  '$timeout', '$interval', function ($scope, $http, $log, $filter,  $timeout, $interval) {
+        $scope.CountryList =[];
+        $scope.model = { addresses: [] }
+        $scope.customerId = 0;
+        var baseUrl = "https://localhost:44362/api/v1/Customer";
+
+        $scope.GridDefaultData = function () {
+            return {
+                customerAddress: '', id : 0, customerId: 0
+            }
+        };
+        $scope.ClearForm = function () {
+            $scope.model = { addresses: [] }
+            $scope.gridOptionsDataSave.data = [];
+            $scope.gridOptionsDataSave.data = [$scope.GridDefaultData()]
+
+        }
+        $scope.gridOptions = {
+            // EXPORT : START
+            enableGridMenu: true,
+            enableSelectAll: true,
+            enableColumnMenus: false,
+            enableAutoFitColumns: false,
+            exporterCsvFilename: 'myFile.csv',
+            exporterPdfDefaultStyle: { fontSize: 7 },
+            exporterPdfTableStyle: { margin: [0, 0, , 0, 0] },
+            exporterPdfTableHeaderStyle: { fontSize: 8, bold: true, italics: false, color: 'black' },
+            exporterPdfHeader: { text: "ItemEntry", style: 'headerStyle', fontSize: 14, bold: true },
+            exporterPdfFooter: function (currentPage, pageCount) {
+                return { text: currentPage.toString() + ' of ' + pageCount.toString(), style: 'footerStyle' };
+            },
+            exporterPdfCustomFormatter: function (docDefinition) {
+                docDefinition.styles.headerStyle = { margin: [2, 2, 2, 2], alignment: 'center' };
+                docDefinition.styles.footerStyle = { fontSize: 8, bold: false, alignment: 'center' };
+                return docDefinition;
+            },
+            exporterPdfOrientation: 'portrait',
+            exporterPdfPageSize: 'LETTER',
+            exporterPdfMaxGridWidth: 480,
+            exporterCsvLinkElement: angular.element(document.querySelectorAll(".custom-csv-link-location")),
+            exporterExcelFilename: 'myFile.xlsx',
+            exporterExcelSheetName: 'Sheet1',
+            // EXPORT : END
+            enableFiltering: true,
+            showGridFooter: true,
+            // Default: End
+            // Register : API [ for collapsable window ]
+            onRegisterApi: function (gridApi) {
+                $scope.gridApi = gridApi;
+                $interval(function () {
+                    $scope.gridApi.core.handleWindowResize();
+                }, 500, 10);
+            }
+        }
+    
+        $scope.gridOptions.columnDefs = [
+            { name: 'Customer Name', field: 'customerName', width: '80%' },
+            {
+                name: 'Action', enableFiltering: false, width: '20%',
+                cellTemplate:
+                    ' <div class="ml-sm">' +
+
+                    ' <a href="javascript:void(0)"  ng-click="grid.appScope.DataLoadById(row.entity.id)">' +
+                    '                <i class="fa fa-edit fa-lg black mr-md ml-md" aria-hidden="true" title="Customer Id" data-placement="top" data-delay="500" data-toggle="tooltip"></i>' 
+            }
+        ];
+
+        $scope.gridOptionsDataSave = {
+            onRegisterApi: function (gridApi) {
+                $scope.gridApi = gridApi;
+                $interval(function () {
+                    $scope.gridApi.core.handleWindowResize();
+                }, 500, 10);
+            },
+            data: [$scope.GridDefaultData()]
+        }
+
+        // data push grid
+        $scope.addItem = function () {
+            $scope.gridOptionsDataSave.data.push(
+                $scope.GridDefaultData()
+            );
+        };
+        /*   For Remove Item */
+        $scope.removeItem = function (row) {
+            var index = $scope.gridOptionsDataSave.data.indexOf(row.entity);
+            if (index == 0) {
+            } else {
+                $scope.gridOptionsDataSave.data.splice(index, 1);
+            }
+        }
+
+        $scope.gridOptionsDataSave.columnDefs = [
+
+            {
+                name: 'Address', width: '75%', enableColumnMenu: false, cellTemplate: ' <div>' +
+                    ' <input type="text" required="" ng-model="row.entity.customerAddress" class="pl-sm" />' +
+                    ' </div>'
+            },
+            {
+                name: ' ', enableColumnMenu: false, width: '25%', cellTemplate:
+                    '<a href="javascript:void(0)" class=" btn btn-lg btn-primary" ng-click="grid.appScope.removeItem(row)">EDIT<i class="fa fa-edit" aria-hidden="true"></i></a>'+
+                    '<a href="javascript:void(0)" class="ml-md btn btn-lg btn-warning" ng-click="grid.appScope.removeItem(row)">DELETE<i class="fa fa-close fa-sm" aria-hidden="true"></i></a>'
+            }
+        ];
+
+        /*   Load  : this area load date wise  */
+
+        $scope.DataLoad = function () {
+            $scope.showLoader = true;
+            $http({
+                method: 'GET',
+                url: baseUrl +'/Customers',
+                headers: {
+                    'Content-Type': 'application/json', /*or whatever type is relevant */
+                    'Accept': 'application/json' /* ditto */
+                },
+            }).then(function (response) {
+                $scope.gridOptions.data = response.data.data;
+                $scope.showLoader = false;
+            },
+                function (responseData) {
+
+                    console.log("Error !" + responseData);
+                });
+        };
+
+        $scope.DataLoad();
+        $scope.DataLoadById = function (id) {
+            $scope.showLoader = true;
+            $http({
+                method: 'GET',
+                url: baseUrl + '/CustomerById/' + id,
+            }).then(function (response) {
+                $scope.customerId = response.data.data.id;
+                $scope.model = response.data.data;
+                $scope.model.maritalStatus = Number(response.data.data.maritalStatus)
+                $scope.gridOptionsDataSave.data = response.data.data.addresses;
+                $scope.showLoader = false;
+            },
+                function (responseData) {
+
+                    console.log("Error !" + responseData);
+                });
+        };
+
+        /*   Load  : this area Save wise  */
+        $scope.LoadCountry = function () {
+            $scope.showLoader = true;
+            $http({
+                method: 'GET',
+                url: baseUrl + '/Countries',
+            }).then(function (response) {
+                $scope.CountryList = response.data.data;
+                $scope.showLoader = false;
+            });
+        };
+        $scope.LoadCountry();
+
+        $scope.Save = function () {
+            $scope.model.addresses = $scope.gridOptionsDataSave.data;
+            $http.post(baseUrl + '/Add',  $scope.model ).then(function (response) {
+                if (response.data.status == true) {
+                    new PNotify({
+                        title: 'Notification',
+                        text: 'Data Saved Successfully.',
+                        type: 'custom',
+                        addclass: 'notification-success',
+                        icon: 'fa fa-check'
+                    });
+                    $scope.DataLoad();
+                    $scope.ClearForm();
+                }
+                else {
+                    new PNotify({
+                        title: 'Notification',
+                        text: '!! Failure : ' + data.data,
+                        type: 'custom',
+                        addclass: 'notification-danger',
+                        icon: 'fa fa-exclamation-triangle'
+                    });
+                }
+            },
+                function (responseData) {
+                    console.log("Error !" + responseData);
+                });
+        };
+
+        $scope.Update = function () {
+            $scope.model.addresses = $scope.gridOptionsDataSave.data;
+            $http.post(baseUrl + '/Edit', $scope.model).then(function (response) {
+                if (response.data.status == true) {
+                    new PNotify({
+                        title: 'Notification',
+                        text: 'Data Updated Successfully.',
+                        type: 'custom',
+                        addclass: 'notification-success',
+                        icon: 'fa fa-check'
+                    });
+                    $scope.DataLoad();
+                    $scope.ClearForm();
+                }
+                else {
+                    new PNotify({
+                        title: 'Notification',
+                        text: '!! Failure : ' + data.data,
+                        type: 'custom',
+                        addclass: 'notification-danger',
+                        icon: 'fa fa-exclamation-triangle'
+                    });
+                }
+            },
+                function (responseData) {
+                    console.log("Error !" + responseData);
+                });
+        };
+
+
+        $scope.DeleteItem = function (id) {
+            if (confirm('Do you want to Delete?')) {
+
+                $http.put(baseUrl + '/Delete',  id ).then(function (response) {
+                    if (response.data.status == true) {
+                        new PNotify({
+                            title: 'Notification',
+                            text: 'Data Deleted Successfully.',
+                            type: 'custom',
+                            addclass: 'notification-success',
+                            icon: 'fa fa-check'
+                        });
+                        $scope.DataLoad();
+                        $scope.ClearForm();
+                    }
+                    else {
+                        new PNotify({
+                            title: 'Notification',
+                            text: '!! Failure : ' + response.data.data.message,
+                            type: 'custom',
+                            addclass: 'notification-danger',
+                            icon: 'fa fa-exclamation-triangle'
+                        });
+                    }
+                });
+            }
+        }
+
+    }]);
+
+
+    ngGridApp.directive("select2", function ($timeout, $parse) {
+        return {
+            restrict: 'AC',
+            require: 'ngModel',
+            link: function (scope, element, attrs) {
+                $timeout(function () {
+                    element.select2();
+                    element.select2Initialized = true;
+                });
+
+                var refreshSelect = function () {
+                    if (!element.select2Initialized) return;
+                    $timeout(function () {
+                        element.trigger('change');
+                    });
+                };
+
+                var recreateSelect = function () {
+                    if (!element.select2Initialized) return;
+                    $timeout(function () {
+                        element.select2('destroy');
+                        element.select2();
+                    });
+                };
+
+                scope.$watch(attrs.ngModel, refreshSelect);
+
+                if (attrs.ngOptions) {
+                    var list = attrs.ngOptions.match(/ in ([^ ]*)/)[1];
+                    // watch for option list change
+                    scope.$watch(list, recreateSelect);
+                }
+
+                if (attrs.ngDisabled) {
+                    scope.$watch(attrs.ngDisabled, refreshSelect);
+                }
+            }
+        };
+    });
+
+ 
+
+</script>
