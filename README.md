@@ -9,8 +9,8 @@ The Customer Protal app is a sample application showcasing .NET 5, ASP.NET Core,
 
 ### Created By @MdSarmratAkbor
 
-    Linkedin: [@MdSamratAkbor](https://www.linkedin.com/in/md-somrat-akbor-40868320b/)
-    Twitter: [@MdSamratAkbor] https://twitter.com/MdsomratAkbor15
+   - Linkedin: [@MdSamratAkbor](https://www.linkedin.com/in/md-somrat-akbor-40868320b/)
+   - Twitter: [@MdSamratAkbor](https://twitter.com/MdsomratAkbor15)
     
 ### Tools
  - C#
