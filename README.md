@@ -2,6 +2,8 @@
 The Customer Protal app is a sample application showcasing .NET 5, ASP.NET Core, Angular Js. This is a interview problem solving projects
 
 ### Customer Protal-UI
+![image](https://user-images.githubusercontent.com/53125546/199815502-08f6951f-a6fd-4545-86e4-cd52d2f7d33f.png)
+
 ![Screenshot (6)](https://user-images.githubusercontent.com/53125546/199815210-07cad663-2040-4513-9258-7f9350bbd73b.png)
 
 
