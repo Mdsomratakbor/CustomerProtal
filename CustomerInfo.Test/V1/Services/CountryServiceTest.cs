@@ -1,5 +1,7 @@
-﻿using CustomerInfo.Entities;
+﻿using CustomerInfo.Data;
+using CustomerInfo.Entities;
 using CustomerInfo.Services;
+using Microsoft.EntityFrameworkCore;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -12,31 +14,46 @@ namespace CustomerInfo.Test.V1.Services
 {
     public class CountryServiceTest
     {
-        public Mock<CountryServices> mockCountryServiceTest;
+
         public CountryServiceTest()
         {
-            mockCountryServiceTest = new Mock<CountryServices>();
+           
         }
 
         [Fact]
         public async void Get_ListofCountry_TypeCehck()
         {
-            
-            List<Country> result = await mockCountryServiceTest.Object.GetCountriesAsync();
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>()
+               .UseInMemoryDatabase("CustomerInfoDB")
+               .Options;
+            using var context = new ApplicationDbContext(options);
+            var customer = new CustomerServices(context);
+           var  mockCountryServiceTest = new CountryServices(context);
+            List<Country> result = await mockCountryServiceTest.GetCountriesAsync();
             Assert.IsType<List<Country>>(result);
         }
         [Fact]
         public async void Get_ListofCountry_CountIsEqual()
         {
-
-            List<Country> result = await mockCountryServiceTest.Object.GetCountriesAsync();
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>()
+                .UseInMemoryDatabase("CustomerInfoDB")
+                .Options;
+            using var context = new ApplicationDbContext(options);
+            var customer = new CustomerServices(context);
+            var mockCountryServiceTest = new CountryServices(context);
+            List<Country> result = await mockCountryServiceTest.GetCountriesAsync();
             Assert.Equal( CreateListAsync().Result.Count() ,result.Count());
         }
         [Fact]
         public async void Get_ListofCountry_CountIsNotEqual()
         {
-
-            List<Country> result = await mockCountryServiceTest.Object.GetCountriesAsync();
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>()
+                   .UseInMemoryDatabase("CustomerInfoDB")
+                   .Options;
+            using var context = new ApplicationDbContext(options);
+            var customer = new CustomerServices(context);
+            var mockCountryServiceTest = new CountryServices(context);
+            List<Country> result = await mockCountryServiceTest.GetCountriesAsync();
             Assert.NotEqual(CreateListAsync().Result.Count()-1, result.Count());
         }
 

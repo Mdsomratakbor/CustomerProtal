@@ -3553,7 +3553,7 @@ html.dark .text-muted {
 }
 
 .bg-success {
-	background: #47a447;
+	background: #47a447 !important;
 	color: white;
 }
 
@@ -3563,7 +3563,7 @@ html.dark .text-muted {
 }
 
 .bg-danger {
-	background: #d2322d;
+	background: #d2322d !important;
 	color: white;
 }
 

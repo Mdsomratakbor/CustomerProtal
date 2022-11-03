@@ -8,7 +8,7 @@
             <div class="row">
     <div class="col-md-4 mt-md">
                     <div ui-grid="gridOptions" ui-grid-exporter ui-grid-auto-fit-columns ui-grid-resize-columns
-                        style="font-family: 'Open Sans', Arial, sans-serif; color: #252222 !important; height: 100%;" class="grid"></div>
+                        style="font-family: 'Open Sans', Arial, sans-serif; color: #252222 !important; height:80vh;" class="grid"></div>
                 </div>
 
 
@@ -33,13 +33,13 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label text-bold">NAME :</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" ng-model="model.customerName" />
+                                <input type="text" class="form-control" ng-required="true" ng-model="model.customerName" />
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label text-bold">FATHER NAME :</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" ng-model="model.fatherName" />
+                                <input type="text" class="form-control" ng-required="true" ng-model="model.fatherName" />
                             </div>
                         </div>
                         <div class="form-group">
@@ -70,6 +70,7 @@
                             <div class="col-md-8">
                                 <select ng-model="model.countryId"
                                         style="width:100%;"
+                                        ng-required="true"
                                         select2=""
                                         ng-options="d.id as d.name for d in CountryList">
                                     <option value="" selected>--Select Country--</option>
@@ -79,7 +80,11 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label text-bold">PHOTO :</label>
                             <div class="col-md-8">
-                                <input type="file" class="form-control" ng-model="model.customerPhoto" />
+                                <div class="input-group">
+                                    <input id="image" class="hidden" type="file" img-upload ng-model="model.customerPhoto" name="customerPhoto">
+                                    <img ng-src="{{model.customerPhoto}}" height="100" width="100" ng-show="model.customerPhoto" />
+                                    <label for="image" class="btn btn-success btn-xs pull-center" name="upload" Value="">Upload Photo</label>
+                                </div>
 
                             </div>
                         </div>
@@ -102,6 +107,8 @@
                 
                         <div ng-show="showLoader" class="loading" style="margin: 0px; padding: 0px; position: fixed; right: 0px; top: 0px; width: 100%; height: 100%; z-index: 30001;">
                         <img src="~/assets/images/wait.gif" alt="loading" style="position: absolute; top: 45%; left: 45%; width: 8%;">
+
+
                         </div>                 
                 </div>
       
@@ -277,7 +284,7 @@
                         title: 'Notification',
                         text: 'Data Saved Successfully.',
                         type: 'custom',
-                        addclass: 'notification-success',
+                        addclass: 'bg-success',
                         icon: 'fa fa-check'
                     });
                     $scope.DataLoad();
@@ -286,9 +293,9 @@
                 else {
                     new PNotify({
                         title: 'Notification',
-                        text: '!! Failure : ' + data.data,
+                        text: '!! Failure : ' + response.data.message,
                         type: 'custom',
-                        addclass: 'notification-danger',
+                        addclass: 'bg-danger',
                         icon: 'fa fa-exclamation-triangle'
                     });
                 }
@@ -306,7 +313,7 @@
                         title: 'Notification',
                         text: 'Data Updated Successfully.',
                         type: 'custom',
-                        addclass: 'notification-success',
+                        addclass: 'bg-success',
                         icon: 'fa fa-check'
                     });
                     $scope.DataLoad();
@@ -315,9 +322,9 @@
                 else {
                     new PNotify({
                         title: 'Notification',
-                        text: '!! Failure : ' + data.data,
+                        text: '!! Failure : ' + response.data.message,
                         type: 'custom',
-                        addclass: 'notification-danger',
+                        addclass: 'bg-danger',
                         icon: 'fa fa-exclamation-triangle'
                     });
                 }
@@ -337,7 +344,7 @@
                             title: 'Notification',
                             text: 'Data Deleted Successfully.',
                             type: 'custom',
-                            addclass: 'notification-success',
+                            addclass: 'bg-success',
                             icon: 'fa fa-check'
                         });
                         $scope.DataLoad();
@@ -346,9 +353,9 @@
                     else {
                         new PNotify({
                             title: 'Notification',
-                            text: '!! Failure : ' + response.data.data.message,
+                            text: '!! Failure : ' + response.data.message,
                             type: 'custom',
-                            addclass: 'notification-danger',
+                            addclass: 'bg-danger',
                             icon: 'fa fa-exclamation-triangle'
                         });
                     }
@@ -399,6 +406,38 @@
         };
     });
 
- 
+    ngGridApp.directive('imgUpload', ['$rootScope', function (rootScope) {
+        return {
+            restrict: 'A',
+            link: function (scope, elem, attrs) {
+                var canvas = document.createElement("canvas");
+                var extensions = 'jpeg ,jpg, png, gif';
+                elem.on('change', function () {
+                    reader.readAsDataURL(elem[0].files[0]);
+                    var filename = elem[0].files[0].name;
+
+                    var extensionlist = filename.split('.');
+                    var extension = extensionlist[extensionlist.length - 1];
+                    if (extensions.indexOf(extension) == -1) {
+                        alert("File extension , Only 'jpeg', 'jpg', 'png', 'gif', 'bmp' are allowed.");
+
+                    } else {
+                        scope.file = elem[0].files[0];
+                        scope.customerPhoto = filename;
+                        
+                    }
+                });
+
+                var reader = new FileReader();
+                reader.onload = function (e) {
+
+                    scope.image = e.target.result;
+                    scope.model.customerPhoto = e.target.result;
+                    scope.$apply();
+
+                }
+            }
+        }
+    }]);
 
 </script>
