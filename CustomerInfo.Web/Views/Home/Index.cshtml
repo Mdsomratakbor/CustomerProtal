@@ -13,82 +13,89 @@
 
 
                 <div class="col-md-8">
+                    <fieldset class="button-group">
+                        <legend class="contro-lable text-bold">Actions</legend>
+                        <div class="form-group mt-4">
+                            <button class="btn btn-primary btn-lg" type="button" name="btnEdit" ng-disabled="frmcustomerInfo.$invalid" ng-click="Update()">
+                                EDIT <i class="fa fa-edit"></i>
+                            </button>
+                            <button class="btn btn-success btn-lg" type="button" name="btnSubmit" ng-disabled="frmcustomerInfo.$invalid" ng-click="Save()">
+                                SAVE <i class="fa fa-floppy-o"></i>
+                            </button>
+                            <button class="btn btn-danger btn-lg" type="button" ng-disabled="customerId==0" ng-click="DeleteItem(customerId)" name="btnDelete">
+                                DELETE <i class="fa fa-trash"></i>
+                            </button>
+                            <button class="btn btn-warning btn-lg" type="button" ng-click="ClearForm()" ng-disabled="frmcustomerInfo.$invalid" name="btnCancle">
+                                CANCEL <i class="fa fa-times"></i>
+                            </button>
+                        </div>
 
-                    <div class="form-group mt-4 button-group">
-                        <button class="btn btn-primary btn-lg" type="button" name="btnEdit" ng-disabled="frmcustomerInfo.$invalid" ng-click="Update()">
-                                    EDIT <i class="fa fa-edit"></i>
-                                </button>
-                        <button class="btn btn-success btn-lg" type="button" name="btnSubmit" ng-disabled="frmcustomerInfo.$invalid" ng-click="Save()">
-                            SAVE <i class="fa fa-floppy-o"></i>
-                        </button>
-                        <button class="btn btn-danger btn-lg" type="button" ng-disabled="customerId==0" ng-click="DeleteItem(customerId)" name="btnDelete">
-                            DELETE <i class="fa fa-trash"></i>
-                        </button>
-                        <button class="btn btn-warning btn-lg" type="button" ng-click="ClearForm()" ng-disabled="frmcustomerInfo.$invalid" name="btnCancle">
-                                    CANCEL <i class="fa fa-times"></i>
-                                </button>
-                    </div>
+                    </fieldset>
+                 
+                    <fieldset class="button-group">
+                        <legend class="contro-lable text-bold">Basic Information</legend>
+                        <div class="form-group">
+                                <label class="col-md-4 control-label text-bold">NAME :</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" placeholder="Enter Name Text" ng-required="true" ng-model="model.customerName" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label text-bold">FATHER NAME :</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" placeholder="Enter Father Name Text" ng-required="true" ng-model="model.fatherName" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label text-bold">MOTHER NAME :</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" placeholder="Enter Mother Name Text" ng-model="model.motherName" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label text-bold">MARITAL STATUS :</label>
+                                <div class="col-md-8">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" ng-model="model.maritalStatus" name="inlineRadioOptions" id="single" ng-true-value="" ng-value="1">
+                                        <label class="form-check-label" for="inlineRadio1">SINGLE</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" ng-model="model.maritalStatus" name="inlineRadioOptions" id="married" ng-value="2">
+                                        <label class="form-check-label" for="inlineRadio2">MARRIED</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" ng-model="model.maritalStatus" name="inlineRadioOptions" id="others" ng-value="0">
+                                        <label class="form-check-label" for="inlineRadio3">OTHERS</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label text-bold">COUNTRY :</label>
+                                <div class="col-md-8">
+                                    <select ng-model="model.countryId"
+                                            style="width:100%;"
+                                            ng-required="true"
+                                            select2=""
+                                            ng-options="d.id as d.name for d in CountryList">
+                                        <option value="" selected>--Select Country--</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label text-bold">PHOTO :</label>
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <input id="image" class="hidden" type="file" img-upload ng-model="model.customerPhoto" name="customerPhoto">
+                                        <img ng-src="{{model.customerPhoto}}" height="100" width="100" ng-show="model.customerPhoto" />
+                                        <label for="image" class="btn btn-success btn-xs pull-center" name="upload" Value="">Upload Photo</label>
+                                    </div>
 
-                    <div class="button-group">
-                        <div class="form-group">
-                            <label class="col-md-4 control-label text-bold">NAME :</label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control" ng-required="true" ng-model="model.customerName" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-4 control-label text-bold">FATHER NAME :</label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control" ng-required="true" ng-model="model.fatherName" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-4 control-label text-bold">MOTHER NAME :</label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control" ng-model="model.motherName" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-4 control-label text-bold">MARITAL STATUS :</label>
-                            <div class="col-md-8">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" ng-model="model.maritalStatus" name="inlineRadioOptions" id="single" ng-true-value=""  ng-value="1">
-                                    <label class="form-check-label" for="inlineRadio1">SINGLE</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" ng-model="model.maritalStatus" name="inlineRadioOptions" id="married" ng-value="2">
-                                    <label class="form-check-label" for="inlineRadio2">MARRIED</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" ng-model="model.maritalStatus" name="inlineRadioOptions" id="others" ng-value="0">
-                                    <label class="form-check-label" for="inlineRadio3">OTHERS</label>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-4 control-label text-bold">COUNTRY :</label>
-                            <div class="col-md-8">
-                                <select ng-model="model.countryId"
-                                        style="width:100%;"
-                                        ng-required="true"
-                                        select2=""
-                                        ng-options="d.id as d.name for d in CountryList">
-                                    <option value="" selected>--Select Country--</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-4 control-label text-bold">PHOTO :</label>
-                            <div class="col-md-8">
-                                <div class="input-group">
-                                    <input id="image" class="hidden" type="file" img-upload ng-model="model.customerPhoto" name="customerPhoto">
-                                    <img ng-src="{{model.customerPhoto}}" height="100" width="100" ng-show="model.customerPhoto" />
-                                    <label for="image" class="btn btn-success btn-xs pull-center" name="upload" Value="">Upload Photo</label>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
+               
+                        </fieldset>
+                  <fieldset class="button-group">
+                      <legend class="contro-lable text-bold">Other Information</legend>
                     <div class="button-group mt-2">
                         <div class="form-group">
 
@@ -104,7 +111,7 @@
                             </div>
                         </div>
                     </div>
-                
+                </fieldset>
                         <div ng-show="showLoader" class="loading" style="margin: 0px; padding: 0px; position: fixed; right: 0px; top: 0px; width: 100%; height: 100%; z-index: 30001;">
                         <img src="~/assets/images/wait.gif" alt="loading" style="position: absolute; top: 45%; left: 45%; width: 8%;">
 
